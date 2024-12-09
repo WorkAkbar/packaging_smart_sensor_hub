@@ -1,0 +1,52 @@
+<odoo>
+    <!-- Dashboard View -->
+    <record id="view_dashboard" model="ir.ui.view">
+        <field name="name">iot.dashboard.tree</field>
+        <field name="model">iot.device</field>
+        <field name="arch" type="xml">
+            <form string="IoT Dashboard">
+                <notebook>
+                    <!-- Tab Devices -->
+                    <page string="Devices">
+                        <group>
+                            <field name="device_ids" widget="many2one_tags"/>
+                        </group>
+                        <field name="device_ids" widget="many2one" options="{'no_create': True}" placeholder="Select a device..."/>
+                        <tree string="IoT Devices">
+                            <field name="name"/>
+                            <field name="device_type"/>
+                            <field name="status"/>
+                            <field name="location"/>
+                        </tree>
+                    </page>
+
+                    <!-- Tab Machine Performance -->
+                    <page string="Machine Performance">
+                        <group>
+                            <field name="performance_ids" widget="many2one_tags"/>
+                        </group>
+                        <tree string="Machine Performance">
+                            <field name="device_id"/>
+                            <field name="temperature"/>
+                            <field name="pressure"/>
+                            <field name="speed"/>
+                            <field name="timestamp"/>
+                        </tree>
+                    </page>
+
+                    <!-- Tab Quality Check -->
+                    <page string="Quality Check">
+                        <group>
+                            <field name="quality_ids" widget="many2one_tags"/>
+                        </group>
+                        <tree string="Quality Checks">
+                            <field name="batch_number"/>
+                            <field name="defects"/>
+                            <field name="status"/>
+                        </tree>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+</odoo>
